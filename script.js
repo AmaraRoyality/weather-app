@@ -1,8 +1,8 @@
 const apiKey = '5658b8966eb2f537d9d45bcb84e4ea59';  
 
 async function getWeather() {
-    const city = document.getElementById('city').value;
-    if (city === '') {
+    const city = document.getElementById('city').value.trim();
+    if (!city) {
         alert("Please enter a city name.");
         return;
     }
@@ -11,26 +11,24 @@ async function getWeather() {
 
     try {
         const response = await fetch(apiURL);
+        if (!response.ok) {
+            throw new Error("City not found or API issue.");
+        }
         const data = await response.json();
 
-        if (data.cod === "404") {
-            alert("City not found!");
-        } else {
-            const cityName = data.name;
-            const temp = data.main.temp;
-            const description = data.weather[0].description;
-            const humidity = data.main.humidity;
-            const pressure = data.main.pressure;
+        const cityName = data.name;
+        const temp = data.main.temp;
+        const description = data.weather[0].description;
+        const humidity = data.main.humidity;
+        const pressure = data.main.pressure;
 
-        
-            document.getElementById('city-name').innerText = `Weather in ${cityName}`;
-            document.getElementById('temperature').innerText = `Temperature: ${temp}°C`;
-            document.getElementById('description').innerText = `Description: ${description}`;
-            document.getElementById('humidity').innerText = `Humidity: ${humidity}%`;
-            document.getElementById('pressure').innerText = `Pressure: ${pressure} hPa`;
-        }
+        document.getElementById('city-name').innerText = `Weather in ${cityName}`;
+        document.getElementById('temperature').innerText = `Temperature: ${temp}°C`;
+        document.getElementById('description').innerText = `Description: ${description}`;
+        document.getElementById('humidity').innerText = `Humidity: ${humidity}%`;
+        document.getElementById('pressure').innerText = `Pressure: ${pressure} hPa`;
     } catch (error) {
-        alert("An error occurred while fetching weather data.");
-        console.error(error);  
+        alert("An error occurred: " + error.message);
+        console.error(error);
     }
 }

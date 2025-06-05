@@ -1,95 +1,80 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: black;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, #74b9ff, #0984e3);
     margin: 0;
     padding: 0;
-    
-}
-
-.container {
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column;
-    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #2d3436;
 }
 
-.weather-info {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.weather-image {
     width: 100%;
-    max-width: 400px;
-    text-align: center;
-    margin: 0 auto;
+    max-width: 150px;
+    margin: 10px 0;
+    border-radius: 50%;
 }
 
-input[type="text"] {
+.weather-info input {
+    width: 85%;
     padding: 10px;
-    width: 80%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
+    font-size: 1rem;
 }
 
-button {
+.weather-info button {
+    background: #0984e3;
+    color: white;
     padding: 10px 15px;
-    background-color: black;
-    color: #fff;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    margin-top: 10px;
 }
 
-button:hover {
-    background-color: black;
+.weather-info button:hover {
+    background: #74b9ff;
+}
+
+#weather-details p {
+    margin: 10px 0;
+    font-size: 1rem;
 }
 
 #weather-details {
     margin-top: 20px;
 }
 
-#weather-details p {
-    margin: 5px 0;
-    font-size: 1rem;
-}
-
-/* Media Queries for Responsiveness */
+/* Media Queries */
 @media (max-width: 600px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
-    .weather-info {
-        width: 90%;
-        padding: 15px;
-    }
-
-    input[type="text"], button {
+    .weather-info input, 
+    .weather-info button {
         width: 100%;
         font-size: 1rem;
-    }
-
-    #weather-details p {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 400px) {
-    h1 {
-        font-size: 1.3rem;
-    }
-
-    input[type="text"], button {
-        font-size: 1.2rem;
     }
 }
